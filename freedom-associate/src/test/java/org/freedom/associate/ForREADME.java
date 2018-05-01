@@ -9,10 +9,12 @@ import java.util.Collection;
 import java.util.List;
 
 /**
+ * include by README.adoc
+ *
  * @author xiayx
  */
 @SuppressWarnings("unchecked")
-public class ForDoc {
+public class ForREADME {
 
     private EntityManager entityManager;
     private Associate associate = null;
@@ -23,7 +25,7 @@ public class ForDoc {
 //tag::setSingleAssociatedObjectForSingleAssociate[]
         AssociatedSource<Long, Associated, Associated> associatedSource = new SameAssociatedSource<Long, Associated>() {
             public Associated getById(Long id) {
-                //根据主键获取实体对象，需自行实现
+                //根据id获取实体对象，需自行实现
                 return entityManager.find(Associated.class, id);
             }
         };
@@ -35,12 +37,12 @@ public class ForDoc {
 //tag::setCollectionAssociatedObjectForSingleAssociate[]
         CollectionAssociatedSource<Long, Associated, Associated> collectionAssociatedSource = new SameCollectionAssociatedSource<Long, Associated>() {
             public Collection<Associated> getCollectionById(Collection<Long> ids) {
-                //根据主键集合获取实体对象集合，需自行实现
+                //根据id集合获取实体对象集合，需自行实现
                 return entityManager.createQuery("from Associated e where e.id in ?1").setParameter(1, ids).getResultList();
             }
 
             public Long resolveId(Associated data) {
-                //从查询结果中获取主键，需自行实现
+                //获取上面查询结果中每一项的id，需自行实现
                 return data.getId();
             }
         };
@@ -52,9 +54,8 @@ public class ForDoc {
 //tag::setSingleAssociatedNameForSingleAssociate[]
         AssociatedSource<Long, String, String> associateSource = new SameAssociatedSource<Long, String>() {
             public String getById(Long id) {
-                //根据id取出name属性，需自行实现
-                return (String) entityManager.createQuery("select e.name from Associated e where e.id = ?1")
-                        .setParameter(1, id).getSingleResult();
+                //根据id获取name属性，需自行实现
+                return (String) entityManager.createQuery("select e.name from Associated e where e.id = ?1").setParameter(1, id).getSingleResult();
             }
         };
         AssociateUtils.setAssociate(associate, "associatedName", associateSource, "associatedId");
@@ -66,18 +67,17 @@ public class ForDoc {
         CollectionAssociatedSource<Long, Object[], String> collectionAssociateSource = new CollectionAssociatedSource<Long, Object[], String>() {
 
             public Collection<Object[]> getCollectionById(Collection<Long> ids) {
-                //根据id集合获取被关联对象(id和name)集合，需自行实现
-                return entityManager.createQuery("select e.id,e.name from Associated e where e.id in ?1")
-                        .setParameter(1, ids).getResultList();
+                //根据id集合获取实体对象(id和name)集合，需自行实现
+                return entityManager.createQuery("select e.id,e.name from Associated e where e.id in ?1").setParameter(1, ids).getResultList();
             }
 
             public Long resolveId(Object[] data) {
-                //从查询结果中取出id，需自行实现
+                //获取上面查询结果中每一项的id，需自行实现
                 return (Long) data[0];
             }
 
             public String format(Object[] data) {
-                //从查询结果中取出name，需自行实现
+                //获取上面查询结果中每一项的name，需自行实现
                 return (String) data[1];
             }
         };
@@ -90,13 +90,12 @@ public class ForDoc {
         CollectionAssociatedSource<Long, Associated, Associated> collectionAssociatedSource = new SameCollectionAssociatedSource<Long, Associated>() {
 
             public Collection<Associated> getCollectionById(Collection<Long> ids) {
-                //根据id集合获取Associated集合，需自行实现
-                return entityManager.createQuery("from Associated e where e.id in ?1")
-                        .setParameter(1, ids).getResultList();
+                //根据id集合获取实体对象集合，需自行实现
+                return entityManager.createQuery("from Associated e where e.id in ?1").setParameter(1, ids).getResultList();
             }
 
             public Long resolveId(Associated data) {
-                //从查询结果中取出id，需自行实现
+                //获取上面查询结果中每一项的id，需自行实现
                 return data.getId();
             }
         };
@@ -109,13 +108,12 @@ public class ForDoc {
         CollectionAssociatedSource<Long, Associated, Associated> collectionAssociatedSource = new SameCollectionAssociatedSource<Long, Associated>() {
 
             public Collection<Associated> getCollectionById(Collection<Long> ids) {
-                //根据id集合获取Associated集合，需自行实现
-                return entityManager.createQuery("from Associated e where e.id in ?1")
-                        .setParameter(1, ids).getResultList();
+                //根据id集合获取实体对象集合，需自行实现
+                return entityManager.createQuery("from Associated e where e.id in ?1").setParameter(1, ids).getResultList();
             }
 
             public Long resolveId(Associated data) {
-                //从查询结果中获取id，需自行实现
+                //获取上面查询结果中每一项的id，需自行实现
                 return data.getId();
             }
         };
@@ -127,18 +125,17 @@ public class ForDoc {
 //tag::setSingleAssociatedNameForCollectionAssociate[]
         CollectionAssociatedSource<Long, Object[], String> associateSource = new CollectionAssociatedSource<Long, Object[], String>() {
             public Collection<Object[]> getCollectionById(Collection<Long> ids) {
-                //根据id获取Associated的id和name，需自行实现
-                return entityManager.createQuery("select e.id,e.name from Associated e where e.id in ?1")
-                        .setParameter(1, ids).getResultList();
+                //根据id集合获取实体对象(id和name)集合，需自行实现
+                return entityManager.createQuery("select e.id,e.name from Associated e where e.id in ?1").setParameter(1, ids).getResultList();
             }
 
             public Long resolveId(Object[] data) {
-                //从查询结果中获取id，需自行实现
+                //获取上面查询结果中每一项的id，需自行实现
                 return (Long) data[0];
             }
 
             public String format(Object[] data) {
-                //从查询结果中获取name，需自行实现
+                //获取上面查询结果中每一项的name，需自行实现
                 return (String) data[1];
             }
         };
@@ -151,18 +148,17 @@ public class ForDoc {
         CollectionAssociatedSource<Long, Object[], String> collectionAssociateSource = new CollectionAssociatedSource<Long, Object[], String>() {
 
             public Collection<Object[]> getCollectionById(Collection<Long> ids) {
-                //根据id集合获取Associate(id和name)集合，需自行实现
-                return entityManager.createQuery("select e.id,e.name from Associated e where e.id in ?1")
-                        .setParameter(1, ids).getResultList();
+                //根据id集合获取实体对象(id和name)集合，需自行实现
+                return entityManager.createQuery("select e.id,e.name from Associated e where e.id in ?1").setParameter(1, ids).getResultList();
             }
 
             public Long resolveId(Object[] data) {
-                //从查询结果中获取id，需自行实现
+                //获取上面查询结果中每一项的id，需自行实现
                 return (Long) data[0];
             }
 
             public String format(Object[] data) {
-                //从查询结果中获取name，需自行实现
+                //获取上面查询结果中每一项的name，需自行实现
                 return (String) data[1];
             }
         };

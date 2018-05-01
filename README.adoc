@@ -9,9 +9,12 @@ v1.0, 2018-03-25: SNAPSHOT
 :resourcesdir: src/main/resources
 :testsourcedir: src/test/java
 :source-highlighter: coderay
+:coderay-linenums-mode: inline
+
 
 https://xiayx.github.io/freedom.html[查看详细介绍^]
 
 // asciidoctor README.adoc
 // asciidoctor README_ACUTAL.adoc -o ../xiayx.github.io/freedom.html
+// asciidoctor freedom-associate/README.adoc -o ../xiayx.github.io/freedom-associate.html
 

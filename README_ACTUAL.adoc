@@ -9,6 +9,7 @@ v1.0, 2018-03-25: SNAPSHOT
 :resourcesdir: src/main/resources
 :testsourcedir: src/test/java
 :source-highlighter: coderay
+:coderay-linenums-mode: inline
 
 记录在开发过程中所需的各种组件。
 
