@@ -10,7 +10,8 @@ v1.0, 2018-03-25: SNAPSHOT
 :testsourcedir: src/test/java
 :source-highlighter: coderay
 
-https://xiayx.github.io/freedom.html[查看详细介绍]
+https://xiayx.github.io/freedom.html[查看详细介绍^]
 
+// asciidoctor README.adoc
 // asciidoctor README_ACUTAL.adoc -o ../xiayx.github.io/freedom.html
 
