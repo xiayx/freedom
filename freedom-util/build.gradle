@@ -1,0 +1,6 @@
+group 'org.freedom'
+
+dependencies {
+    compile "com.google.code.findbugs:jsr305"
+    compileOnly 'junit:junit'
+}
